@@ -5,6 +5,11 @@ public class MainApplication {
         System.out.println("Hello World!");
         System.out.println("---");
         System.out.println("12223");
+        System.out.println("12223");
+    }
+
+    public static void doit(String[] args) {
+        System.out.println(1);
     }
 
     public static void doit(String[] args) {
