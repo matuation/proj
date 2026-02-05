@@ -13,8 +13,8 @@ public class MainApplication {
 //        System.out.println(x%10);
 //        System.out.println(x/10);
 
-//        System.out.println(CycleMethods.equalNum(100));
+        System.out.println(CycleMethods.equalNum(21));
 
-        CycleMethods.guessGame();
+//        CycleMethods.guessGame();
     }
 }

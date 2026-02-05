@@ -49,7 +49,7 @@ public class CycleMethods {
         int del = x % 10;
         while (x > 9) {
             x = x / 10;
-            if (x % 10 != del) {
+            if (x % 10 == del) {
                 res = true;
             } else {
                 res = false;
