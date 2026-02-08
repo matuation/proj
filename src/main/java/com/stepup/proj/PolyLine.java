@@ -21,24 +21,19 @@ public class PolyLine {
     public ArrayList getLines() {
         ArrayList<Line> linesOfPolyLine = new ArrayList<>();
         for (int i = 0; i < polyLinePoints.size() - 1; i++) {
-            if (i % 2 == 0) {
-                Line line = Line.ofDots(polyLinePoints.get(i), polyLinePoints.get(i + 1));
-                linesOfPolyLine.add(line);
-            } else {
-                Line line = Line.ofDots(polyLinePoints.get(i), polyLinePoints.get(i + 1));
-                linesOfPolyLine.add(line);
-            }
+            Line line = Line.ofDots(polyLinePoints.get(i), polyLinePoints.get(i + 1));
+            linesOfPolyLine.add(line);
         }
         return linesOfPolyLine;
     }
 
     public double getLength() {
         double polyLineLength = 0;
-        for (int i = 0; i < this.getLines().size(); i++){
+        for (int i = 0; i < this.getLines().size(); i++) {
             Line line = (Line) this.getLines().get(i);
-            polyLineLength+=line.getLength();
+            polyLineLength += line.getLength();
         }
-    return polyLineLength;
+        return polyLineLength;
     }
 
     @Override
