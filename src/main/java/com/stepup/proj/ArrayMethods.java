@@ -1,5 +1,6 @@
 package com.stepup.proj;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
@@ -16,7 +17,7 @@ public class ArrayMethods {
 
     //Поиск последнего значения
     public static int findLast(int[] arr, int x) {
-        for (int i = arr.length - 1; i != 0; i--) {
+        for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] == x) {
                 return i;
             }
@@ -74,14 +75,14 @@ public class ArrayMethods {
     }
 
     //Возвратный реверс
-    public static void reverseBack(int[] arr) {
+    public static int[] reverseBack(int[] arr) {
         int[] resultingArray = new int[arr.length];
         int positionCounter = 0;
         for (int i = arr.length - 1; i >= 0; i--) {
             resultingArray[positionCounter] = arr[i];
             positionCounter++;
         }
-        System.out.println(Arrays.toString(resultingArray));
+        return resultingArray;
     }
 
     //Объединение
@@ -123,13 +124,13 @@ public class ArrayMethods {
         int positiveCounter = 0;
         int postionCounter = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 0) {
+            if (arr[i] >= 0) {
                 positiveCounter++;
             }
         }
         int[] resultingArray = new int[positiveCounter];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 0) {
+            if (arr[i] >= 0) {
                 resultingArray[postionCounter] = arr[i];
                 postionCounter++;
             }
