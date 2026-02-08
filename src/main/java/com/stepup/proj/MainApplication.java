@@ -1,16 +1,53 @@
 package com.stepup.proj;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainApplication {
     public static void main(String[] args) {
-        System.out.println("==============START===============");
-        System.out.println("1. Создать несколько экземпляров дробей");
-        Fraction f1 = Fraction.of(1, 3);
-        Fraction f2 = Fraction.of(2, 5);
-        Fraction f3 = Fraction.of(7, 8);
-        System.out.println("Созданы дроби:" + f1 + ", " + f2 + ", " + f3);
-        System.out.println("==================================");
-        System.out.println("2. Посчитать f1.sum(f2).sum(f3).minus(5)");
-        System.out.println(f1 + ".sum(" + f2 + ").sum(" + f3 + ").minus(5)= " + f1.sum(f2).sum(f3).minus(5));
-        System.out.println("===============END================");
+        ArrayList<Integer> g1 = new ArrayList<>(Arrays.asList(3, 2, 3));
+        ArrayList<Integer> g2 = new ArrayList<>(Arrays.asList(4, 4, 3));
+        ArrayList<Integer> g3 = new ArrayList<>(Arrays.asList(5, 5, 3, 2));
+        ArrayList<Integer> g4 = new ArrayList<>(Arrays.asList(5, 5, 3));
+
+
+        System.out.println("=================START================");
+        System.out.println("Создадим и выведем студента без оценок");
+        Student sasha = new Student("Alexander");
+        System.out.println(sasha);
+        System.out.println("======================================");
+        System.out.println("Добавим студенту массив оценок и выведем результат на экран");
+        sasha.setGrades(g1);
+        System.out.println(sasha);
+        System.out.println("======================================");
+        System.out.println("Изменим студенту массив оценок и выведем результат на экран");
+        sasha.setGrades(g2);
+        System.out.println(sasha);
+        System.out.println("======================================");
+        System.out.println("Получим оценки и выведем их на экран");
+        System.out.println(sasha.getGrades());
+        System.out.println("======================================");
+        System.out.println("Добавим оценку в массив и выведем результат на экран");
+        sasha.setGrades(g3);
+        System.out.println(sasha);
+        System.out.println("======================================");
+        System.out.println("Создадим и выведем студента c оценками");
+        Student dmitry = new Student("Dmitry", g1);
+        System.out.println(dmitry);
+        System.out.println("======================================");
+        System.out.println("Изменим студенту массив оценок и выведем результат на экран");
+        dmitry.setGrades(g2);
+        System.out.println(dmitry);
+        System.out.println("======================================");
+        System.out.println("Получим оценки и выведем их на экран");
+        System.out.println(dmitry.getGrades());
+        System.out.println("======================================");
+        System.out.println("Добавим оценку в массив и выведем результат на экран");
+        dmitry.setGrades(g3);
+        System.out.println(dmitry);
+        System.out.println("======================================");
+        System.out.println("Удалим оценку из массива и выведем результат на экран");
+        dmitry.setGrades(g1);
+        System.out.println(dmitry);
     }
 }
