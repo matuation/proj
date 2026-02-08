@@ -29,6 +29,7 @@ public class MainApplication {
             lineArrayLength += lineArray.get(i).getLength();
         }
         System.out.println("Длина массива Линий: " + lineArrayLength);
+        System.out.println("======================================");
         System.out.println("5. Сравнить длину Ломаной и массива Линий: они должны совпасть");
         System.out.println("Длина массива линий = длине Ломаной? " + (lineArrayLength == polyLine.getLength()));
         System.out.println("======================================");
