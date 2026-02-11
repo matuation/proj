@@ -2,7 +2,7 @@ package com.stepup.proj;
 
 import java.util.ArrayList;
 
-public class PolyLine {
+public class PolyLine implements Measurable {
     ArrayList<Dot> polyLinePoints = new ArrayList<>();
 
     public PolyLine(ArrayList<Dot> polyLinePoints) {
@@ -18,6 +18,11 @@ public class PolyLine {
         return new PolyLine(null);
     }
 
+    @Override
+    public ArrayList<Dot> getPoints() {
+        return this.polyLinePoints;
+    }
+
     public ArrayList getLines() {
         ArrayList<Line> linesOfPolyLine = new ArrayList<>();
         for (int i = 0; i < polyLinePoints.size() - 1; i++) {
@@ -28,14 +33,14 @@ public class PolyLine {
         return linesOfPolyLine;
     }
 
-    public double getLength() {
-        double polyLineLength = 0;
-        for (int i = 0; i < this.getLines().size(); i++) {
-            Line line = (Line) this.getLines().get(i);
-            polyLineLength += line.getLength();
-        }
-        return polyLineLength;
-    }
+//    public double getLength() {
+//        double polyLineLength = 0;
+//        for (int i = 0; i < this.getLines().size(); i++) {
+//            Line line = (Line) this.getLines().get(i);
+//            polyLineLength += line.getLength();
+//        }
+//        return polyLineLength;
+//    }
 
     @Override
     public String toString() {

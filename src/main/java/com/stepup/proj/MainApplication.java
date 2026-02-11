@@ -10,6 +10,8 @@ public class MainApplication {
     Dot dot3 = new Dot(3,5);
     ArrayList<Dot> dots = new ArrayList<>(Arrays.asList(dot1,dot2,dot3));
     ClosedPolyLine closedPolyLine = new ClosedPolyLine(dots);
-    System.out.println(closedPolyLine.getClosedLinesLength());
+    PolyLine line = new PolyLine(dots);
+    System.out.println(line.getLength());
+    System.out.println(closedPolyLine.getLength());
     }
 }
