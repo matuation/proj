@@ -1,5 +1,7 @@
 package com.stepup.proj;
 
+import java.util.Arrays;
+
 public class Fraction extends Number {
     private int numerator;
     private int denominator;
@@ -74,6 +76,15 @@ public class Fraction extends Number {
         return newFraction;
     }
 
+    public static double sumAll (Number... number){
+        double sumIs = 0;
+        for (int i = 0; i < number.length; i++) {
+        Number currNumber = number[i];
+            sumIs += currNumber.doubleValue();
+        }
+        return sumIs;
+    }
+
     @Override
     public String toString() {
         return numerator + "/" + denominator;
@@ -81,21 +92,21 @@ public class Fraction extends Number {
 
     @Override
     public int intValue() {
-        return this.numerator % this.denominator;
+        return this.numerator / this.denominator;
     }
 
     @Override
     public long longValue() {
-        return this.numerator % this.denominator;
+        return (long) this.numerator / this.denominator;
     }
 
     @Override
     public float floatValue() {
-        return this.numerator % this.denominator;
+        return (float) this.numerator / this.denominator;
     }
 
     @Override
     public double doubleValue() {
-        return this.numerator % this.denominator;
+        return (double) this.numerator / this.denominator;
     }
 }
