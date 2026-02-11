@@ -5,13 +5,10 @@ import java.util.Arrays;
 
 public class MainApplication {
     public static void main(String[] args) {
-    Dot dot1 = new Dot(1,5);
-    Dot dot2 = new Dot(2,8);
-    Dot dot3 = new Dot(3,5);
-    ArrayList<Dot> dots = new ArrayList<>(Arrays.asList(dot1,dot2,dot3));
-    ClosedPolyLine closedPolyLine = new ClosedPolyLine(dots);
-    PolyLine line = new PolyLine(dots);
-    System.out.println(line.getLength());
-    System.out.println(closedPolyLine.getLength());
+   Fraction f1 = Fraction.of(4,3);
+        System.out.println(f1.intValue());
+        System.out.println(f1.longValue());
+        System.out.println(f1.doubleValue());
+        System.out.println(f1.floatValue());
     }
 }

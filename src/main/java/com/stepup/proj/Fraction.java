@@ -1,8 +1,8 @@
 package com.stepup.proj;
 
-public class Fraction {
-    private int numerator = 0;
-    private int denominator = 0;
+public class Fraction extends Number {
+    private int numerator;
+    private int denominator;
 
     private Fraction(int numerator, int denominator) {
         if (denominator < 0) {
@@ -77,5 +77,25 @@ public class Fraction {
     @Override
     public String toString() {
         return numerator + "/" + denominator;
+    }
+
+    @Override
+    public int intValue() {
+        return this.numerator % this.denominator;
+    }
+
+    @Override
+    public long longValue() {
+        return this.numerator % this.denominator;
+    }
+
+    @Override
+    public float floatValue() {
+        return this.numerator % this.denominator;
+    }
+
+    @Override
+    public double doubleValue() {
+        return this.numerator % this.denominator;
     }
 }
