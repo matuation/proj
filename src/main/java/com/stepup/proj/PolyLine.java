@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PolyLine {
     ArrayList<Dot> polyLinePoints = new ArrayList<>();
 
-    private PolyLine(ArrayList<Dot> polyLinePoints) {
+    public PolyLine(ArrayList<Dot> polyLinePoints) {
         this.polyLinePoints = polyLinePoints;
     }
 
@@ -24,6 +24,7 @@ public class PolyLine {
             Line line = Line.ofDots(polyLinePoints.get(i), polyLinePoints.get(i + 1));
             linesOfPolyLine.add(line);
         }
+
         return linesOfPolyLine;
     }
 
