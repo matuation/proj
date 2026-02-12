@@ -1,4 +1,4 @@
-package com.stepup.proj;
+package ru.сourses.geometry;
 
 import java.util.ArrayList;
 

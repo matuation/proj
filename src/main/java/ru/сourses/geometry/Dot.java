@@ -1,15 +1,15 @@
-package com.stepup.proj;
+package ru.сourses.geometry;
 
 public class Dot {
-    int x;
-    int y;
+    public int x;
+    public int y;
 
-    public Dot(int x, int y) {
+    private Dot(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    static Dot ofCoordinates(int x, int y) {
+    public static Dot ofCoordinates(int x, int y) {
         return new Dot(x, y);
     }
 

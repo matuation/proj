@@ -1,4 +1,4 @@
-package com.stepup.proj;
+package ru.сourses.geometry;
 
 public class Line {
     Dot lineStart;

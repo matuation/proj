@@ -1,4 +1,4 @@
-package com.stepup.proj;
+package ru.сourses.geometry;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ public interface Measurable {
 
     ArrayList<Dot> getPoints();
 
-    default public ArrayList getLines() {
+    default ArrayList<Line> getLines() {
         ArrayList<Line> linesOfPolyLine = new ArrayList<>();
         ArrayList<Dot> points = getPoints();
         for (int i = 0; i < points.size() - 1; i++) {
@@ -19,9 +19,8 @@ public interface Measurable {
 
     default double getLength() {
         double polyLineLength = 0;
-        for (int i = 0; i < this.getLines().size(); i++) {
-            Line line = (Line) this.getLines().get(i);
-            polyLineLength += line.getLength();
+        for(Line line : this.getLines()){
+            polyLineLength+=line.getLength();
         }
         return polyLineLength;
     }

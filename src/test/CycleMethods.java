@@ -1,4 +1,4 @@
-package com.stepup.proj;
+package ru.сourses.school;
 
 public class CycleMethods {
     public static String listNums(int x) {

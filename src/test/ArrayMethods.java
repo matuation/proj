@@ -1,4 +1,4 @@
-package com.stepup.proj;
+package ru.сourses.school;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

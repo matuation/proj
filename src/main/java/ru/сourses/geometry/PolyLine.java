@@ -1,9 +1,11 @@
-package com.stepup.proj;
+package ru.сourses.geometry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PolyLine implements Measurable {
     ArrayList<Dot> polyLinePoints = new ArrayList<>();
+    static ArrayList<Dot> noPoints = new  ArrayList<>((List.of(Dot.ofCoordinates(0,0))));
 
     public PolyLine(ArrayList<Dot> polyLinePoints) {
         this.polyLinePoints = polyLinePoints;
@@ -15,7 +17,7 @@ public class PolyLine implements Measurable {
     }
 
     static PolyLine ofNoting() {
-        return new PolyLine(null);
+        return new PolyLine(noPoints);
     }
 
     @Override
@@ -32,15 +34,6 @@ public class PolyLine implements Measurable {
 
         return linesOfPolyLine;
     }
-
-//    public double getLength() {
-//        double polyLineLength = 0;
-//        for (int i = 0; i < this.getLines().size(); i++) {
-//            Line line = (Line) this.getLines().get(i);
-//            polyLineLength += line.getLength();
-//        }
-//        return polyLineLength;
-//    }
 
     @Override
     public String toString() {

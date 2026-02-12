@@ -1,14 +1,12 @@
-package com.stepup.proj;
-
-import java.util.Arrays;
+package ru.сourses.math;
 
 public class Fraction extends Number {
     private int numerator;
     private int denominator;
 
     private Fraction(int numerator, int denominator) {
-        if (denominator < 0) {
-            throw new IllegalArgumentException("Знаменатель не может быть отрицательным!");
+        if (denominator <= 0) {
+            throw new IllegalArgumentException("Знаменатель не может быть отрицательным или равным 0!");
         }
         this.denominator = denominator;
         this.numerator = numerator;
@@ -24,17 +22,13 @@ public class Fraction extends Number {
         return numerator;
     }
 
-    private void setNumerator(int numerator) {
-        this.numerator = numerator;
-    }
+
 
     public int getDenominator() {
         return denominator;
     }
 
-    private void setDenominator(int denominator) {
-        this.denominator = denominator;
-    }
+
 
     public Fraction sum(Fraction fraction) {
         Fraction newFraction = null;
