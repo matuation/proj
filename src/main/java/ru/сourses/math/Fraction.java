@@ -18,17 +18,22 @@ public class Fraction extends Number {
 
     }
 
+    public static double sumAll(Number... number) {
+        double sumIs = 0;
+        for (int i = 0; i < number.length; i++) {
+            Number currNumber = number[i];
+            sumIs += currNumber.doubleValue();
+        }
+        return sumIs;
+    }
+
     public int getNumerator() {
         return numerator;
     }
 
-
-
     public int getDenominator() {
         return denominator;
     }
-
-
 
     public Fraction sum(Fraction fraction) {
         Fraction newFraction = null;
@@ -68,15 +73,6 @@ public class Fraction extends Number {
         int newFractionNumerator = this.numerator - (this.denominator * number);
         newFraction = Fraction.of(newFractionNumerator, this.denominator);
         return newFraction;
-    }
-
-    public static double sumAll (Number... number){
-        double sumIs = 0;
-        for (int i = 0; i < number.length; i++) {
-        Number currNumber = number[i];
-            sumIs += currNumber.doubleValue();
-        }
-        return sumIs;
     }
 
     @Override

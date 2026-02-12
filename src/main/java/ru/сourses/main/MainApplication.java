@@ -1,21 +1,17 @@
 package ru.сourses.main;
 
-import ru.сourses.geometry.ClosedPolyLine;
-import ru.сourses.geometry.Dot;
-import ru.сourses.geometry.PolyLine;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import ru.сourses.math.Fraction;
 
 public class MainApplication {
     public static void main(String[] args) {
-        Dot dot1 = Dot.ofCoordinates(1,5);
-        Dot dot2 = Dot.ofCoordinates(2,8);
-        Dot dot3 = Dot.ofCoordinates(3,5);
-        ArrayList<Dot> dots = new ArrayList<>(Arrays.asList(dot1,dot2,dot3));
-        ClosedPolyLine closedPolyLine = new ClosedPolyLine(dots);
-        PolyLine line = new PolyLine(dots);
-        System.out.println(line.getLength());
-        System.out.println(closedPolyLine.getLength());
+        Fraction f1 = Fraction.of(3, 5);
+        Fraction f2 = Fraction.of(49, 12);
+        Fraction f3 = Fraction.of(3, 2);
+        Fraction f4 = Fraction.of(1, 3);
+
+        System.out.println(Fraction.sumAll(2, f1, 2.3));
+        System.out.println(Fraction.sumAll(3.6, f2, 3, f3));
+        System.out.println(Fraction.sumAll(f4, 1));
+
     }
 }
