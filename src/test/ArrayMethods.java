@@ -1,4 +1,4 @@
-package ru.сourses.school;
+package ru.courses.school;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

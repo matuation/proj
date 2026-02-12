@@ -1,4 +1,4 @@
-package ru.сourses.school;
+package ru.courses.school;
 
 public class CycleMethods {
     public static String listNums(int x) {
