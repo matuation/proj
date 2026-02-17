@@ -1,8 +1,8 @@
 package ru.courses.math;
 
 public class Fraction extends Number {
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
 
     private Fraction(int numerator, int denominator) {
         if (denominator <= 0) {
@@ -36,7 +36,7 @@ public class Fraction extends Number {
     }
 
     public Fraction sum(Fraction fraction) {
-        Fraction newFraction = null;
+        Fraction newFraction;
         if (this.denominator == fraction.getDenominator()) {
             int newFractionNumerator = this.numerator + fraction.getNumerator();
             newFraction = Fraction.of(newFractionNumerator, fraction.getDenominator());
@@ -49,14 +49,14 @@ public class Fraction extends Number {
     }
 
     public Fraction sum(int number) {
-        Fraction newFraction = null;
+        Fraction newFraction;
         int newFractionNumerator = (this.denominator * number) + this.numerator;
         newFraction = Fraction.of(newFractionNumerator, this.denominator);
         return newFraction;
     }
 
     public Fraction minus(Fraction fraction) {
-        Fraction newFraction = null;
+        Fraction newFraction;
         if (this.denominator == fraction.getDenominator()) {
             int newFractionNumerator = this.numerator - fraction.getNumerator();
             newFraction = Fraction.of(newFractionNumerator, fraction.getDenominator());
@@ -69,7 +69,7 @@ public class Fraction extends Number {
     }
 
     public Fraction minus(int number) {
-        Fraction newFraction = null;
+        Fraction newFraction;
         int newFractionNumerator = this.numerator - (this.denominator * number);
         newFraction = Fraction.of(newFractionNumerator, this.denominator);
         return newFraction;
