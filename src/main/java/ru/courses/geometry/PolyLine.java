@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PolyLine implements Measurable {
-    ArrayList<Dot> polyLinePoints = new ArrayList<>();
-    static ArrayList<Dot> noPoints = new  ArrayList<>((List.of(Dot.ofCoordinates(0,0))));
+    static ArrayList<Point> noPoints = new ArrayList<>((List.of(Point.ofCoordinates(0, 0))));
+    private ArrayList<Point> polyLinePoints = new ArrayList<>();
 
-    public PolyLine(ArrayList<Dot> polyLinePoints) {
+    public PolyLine(ArrayList<Point> polyLinePoints) {
         this.polyLinePoints = polyLinePoints;
     }
 
-    static PolyLine ofLines(ArrayList<Dot> polyLinePoints) {
+    static PolyLine ofLines(ArrayList<Point> polyLinePoints) {
         return new PolyLine(polyLinePoints);
 
     }
@@ -20,12 +20,16 @@ public class PolyLine implements Measurable {
         return new PolyLine(noPoints);
     }
 
+    public ArrayList<Point> getPolyLinePoints() {
+        return polyLinePoints;
+    }
+
     @Override
-    public ArrayList<Dot> getPoints() {
+    public ArrayList<Point> getPoints() {
         return this.polyLinePoints;
     }
 
-    public ArrayList getLines() {
+    public ArrayList<Line> getLines() {
         ArrayList<Line> linesOfPolyLine = new ArrayList<>();
         for (int i = 0; i < polyLinePoints.size() - 1; i++) {
             Line line = Line.ofDots(polyLinePoints.get(i), polyLinePoints.get(i + 1));

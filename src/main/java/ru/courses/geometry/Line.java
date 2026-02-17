@@ -1,21 +1,21 @@
 package ru.courses.geometry;
 
 public class Line {
-    Dot lineStart;
-    Dot lineEnd;
+    Point lineStart;
+    Point lineEnd;
 
-    private Line(Dot lineStart, Dot lineEnd) {
+    private Line(Point lineStart, Point lineEnd) {
         this.lineStart = lineStart;
         this.lineEnd = lineEnd;
     }
 
-    static Line ofDots(Dot lineStart, Dot lineEnd) {
+    static Line ofDots(Point lineStart, Point lineEnd) {
         return new Line(lineStart, lineEnd);
     }
 
     static Line ofCoordinates(int xStart, int yStart, int xEnd, int yEnd) {
-        Dot pointStart = Dot.ofCoordinates(xStart, yStart);
-        Dot pointEnd = Dot.ofCoordinates(xEnd, yEnd);
+        Point pointStart = Point.ofCoordinates(xStart, yStart);
+        Point pointEnd = Point.ofCoordinates(xEnd, yEnd);
         return new Line(pointStart, pointEnd);
     }
 

@@ -2,15 +2,15 @@ package ru.courses.geometry;
 
 import java.util.ArrayList;
 
-public class ClosedPolyLine extends PolyLine implements Measurable {
+public class ClosedPolyLine extends PolyLine {
 
-    public ClosedPolyLine(ArrayList<Dot> polyLinePoints) {
+    public ClosedPolyLine(ArrayList<Point> polyLinePoints) {
         super(polyLinePoints);
     }
 
     @Override
-    public ArrayList<Dot> getPoints() {
-        return this.polyLinePoints;
+    public ArrayList<Point> getPoints() {
+        return getPolyLinePoints();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ClosedPolyLine extends PolyLine implements Measurable {
     @Override
     public String toString() {
         return "ClosedPolyLine{" +
-                "polyLinePoints=" + polyLinePoints +
+                "polyLinePoints=" + getPolyLinePoints() +
                 '}';
     }
 }
