@@ -1,16 +1,17 @@
 package ru.courses.school;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
     private final String name;
-    private ArrayList<Integer> grades = new ArrayList<>();
+    private List<Integer> grades;
 
     public Student(String name) {
         this(name, new ArrayList<>());
     }
 
-    public Student(String name, ArrayList<Integer> grades) {
+    public Student(String name, List<Integer> grades) {
         if ((name == null) || (name.isEmpty())) {
             throw new IllegalArgumentException("Имя Студента не может быть пустым!");
         } else {
@@ -19,10 +20,10 @@ public class Student {
         for (int grade : grades) {
             addGrade(grade);
         }
-        this.grades = new ArrayList<>(grades);
+        this.grades = grades;
     }
 
-    public ArrayList<Integer> getGrades() {
+    public List<Integer> getGrades() {
         return new ArrayList<>(grades);
     }
 
@@ -32,7 +33,6 @@ public class Student {
         } else {
             this.grades.add(grade);
         }
-        this.grades = new ArrayList<>(grades);
     }
 
     @Override
