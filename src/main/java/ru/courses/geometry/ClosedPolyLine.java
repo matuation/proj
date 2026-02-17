@@ -17,7 +17,7 @@ public class ClosedPolyLine extends PolyLine {
     public double getLength() {
         double firstLength = super.getLength();
         ArrayList<Line> linesOfClosedPolyLine = this.getLines();
-        firstLength += Line.ofDots(linesOfClosedPolyLine.get(linesOfClosedPolyLine.size() - 1).lineEnd, linesOfClosedPolyLine.get(0).lineStart).getLength();
+        firstLength += Line.ofDots(linesOfClosedPolyLine.get(linesOfClosedPolyLine.size() - 1).getLineEnd(), linesOfClosedPolyLine.get(0).getLineStart()).getLength();
         return firstLength;
     }
 

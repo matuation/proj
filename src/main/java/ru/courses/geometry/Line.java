@@ -4,6 +4,14 @@ public class Line {
     Point lineStart;
     Point lineEnd;
 
+    public Point getLineStart() {
+        return lineStart;
+    }
+
+    public Point getLineEnd() {
+        return lineEnd;
+    }
+
     private Line(Point lineStart, Point lineEnd) {
         this.lineStart = lineStart;
         this.lineEnd = lineEnd;
