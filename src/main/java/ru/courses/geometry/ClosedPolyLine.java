@@ -1,11 +1,27 @@
 package ru.courses.geometry;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ClosedPolyLine extends PolyLine {
 
     public ClosedPolyLine(ArrayList<Point> polyLinePoints) {
         super(polyLinePoints);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.getPolyLinePoints());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){return true;}
+        if (obj == null || getClass() != obj.getClass()) {return false;}
+        ClosedPolyLine closedPolyLine = (ClosedPolyLine) obj;
+        return Objects.equals(this.getPolyLinePoints(), closedPolyLine.getPolyLinePoints());
     }
 
     @Override
@@ -27,4 +43,6 @@ public class ClosedPolyLine extends PolyLine {
                 "polyLinePoints=" + getPolyLinePoints() +
                 '}';
     }
+
+
 }
