@@ -35,7 +35,7 @@ public class Point {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Point clone() throws CloneNotSupportedException {
+        return new Point(x,y);
     }
 }
