@@ -1,23 +1,23 @@
 package ru.courses.geometry;
 
+import java.util.Objects;
+
 public class Line {
     Point lineStart;
     Point lineEnd;
-
-    public Point getLineStart() {
-        return lineStart;
-    }
-
-    public Point getLineEnd() {
-        return lineEnd;
-    }
 
     private Line(Point lineStart, Point lineEnd) {
         this.lineStart = lineStart;
         this.lineEnd = lineEnd;
     }
 
-    static Line ofDots(Point lineStart, Point lineEnd) {
+
+    public Line(Line cloneofline) {
+        this.lineStart = cloneofline.lineStart;
+        this.lineEnd = cloneofline.lineEnd;
+    }
+
+    public static Line ofDots(Point lineStart, Point lineEnd) {
         return new Line(lineStart, lineEnd);
     }
 
@@ -25,6 +25,14 @@ public class Line {
         Point pointStart = Point.ofCoordinates(xStart, yStart);
         Point pointEnd = Point.ofCoordinates(xEnd, yEnd);
         return new Line(pointStart, pointEnd);
+    }
+
+    public Point getLineStart() {
+        return lineStart;
+    }
+
+    public Point getLineEnd() {
+        return lineEnd;
     }
 
     public double getLength() {
@@ -36,10 +44,24 @@ public class Line {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Line line = (Line) o;
+        return Objects.equals(lineStart, line.lineStart) && Objects.equals(lineEnd, line.lineEnd);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lineStart, lineEnd);
+    }
+
+    @Override
     public String toString() {
         return "Линия от " +
                 lineStart +
                 " до " + lineEnd
                 ;
+
+
     }
 }
