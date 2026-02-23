@@ -8,7 +8,6 @@ import ru.courses.geometry.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.courses.cooking.SpicyLevels.SPICY;
 import static ru.courses.cooking.SpicyLevels.VERY_SPICY;
 
 
