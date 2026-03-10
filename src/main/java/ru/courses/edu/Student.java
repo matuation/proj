@@ -1,64 +1,45 @@
 package ru.courses.edu;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+@ToString
+@EqualsAndHashCode
 public class Student {
+
+    @Setter
+    private StudentRepository repo;
+    @Getter
+    @Setter
     private String name;
-    private List<Integer> grades= new ArrayList<>();
+    private List<Integer> grades = new ArrayList<>();
 
     public Student(String name) {
         this.name = name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public List<Integer> getGrades() {
         return new ArrayList<>(grades);
     }
 
+    public void setRepo(StudentRepository repo) {
+        this.repo = repo;
+    }
+
+    @SneakyThrows
     public void addGrade(int grade) {
-        if (grade < 2 || grade > 5) {
-            throw new IllegalArgumentException(grade + " is wrong grade");
+        if(!repo.addGrade(grade)) {
+            throw new IllegalArgumentException("Оценки могут принимать значения только от 2 до 5!");
         }
-        this.grades.add(grade);
+        else {
+            grades.add(grade);
+        }
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.name);
-        hash = 13 * hash + Objects.hashCode(this.grades);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Student other = (Student) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return Objects.equals(this.grades, other.grades);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" + "name=" + name + ", marks=" + grades + '}';
+    @SneakyThrows
+    public int raiting() {
+        return repo.raiting();
     }
 }
