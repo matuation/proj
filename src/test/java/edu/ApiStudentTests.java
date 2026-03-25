@@ -4,15 +4,18 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.is;
 
 
 public class ApiStudentTests {
+
+    @AfterEach
+    public void cleanStudents() {
+        deleteStudents();
+    }
 
     String studentBasic = """
             {
@@ -30,7 +33,7 @@ public class ApiStudentTests {
 
     String studentNoId = """
             {
-            	"id": "",
+            	"id": null,
             	"name": "Gustavo",
             	"marks": [1,2,3,4,5]
             }""";
@@ -38,7 +41,6 @@ public class ApiStudentTests {
     String studentNoName = """
             {
             	"id": "1",
-            	"name": ,
             	"marks": [1,2,3,4,5]
             }""";
 
@@ -82,6 +84,8 @@ public class ApiStudentTests {
 
         JsonPath response = RestAssured.given()
                 .baseUri("http://localhost:8080/student/" + jsonBasicStudent.get("id"))
+                .log()
+                .all()
                 .when()
                 .get()
                 .then()
@@ -93,7 +97,6 @@ public class ApiStudentTests {
 
         Assertions.assertEquals("Zhorik", response.get("name").toString());
 
-        deleteStudents();
     }
 
     @Test
@@ -119,7 +122,6 @@ public class ApiStudentTests {
                 .then()
                 .statusCode(201);
 
-        deleteStudents();
     }
 
     @Test
@@ -140,7 +142,6 @@ public class ApiStudentTests {
                 .log().all()
                 .statusCode(201);
 
-        deleteStudents();
     }
 
     @Test
@@ -156,7 +157,6 @@ public class ApiStudentTests {
                 .log().all()
                 .statusCode(201);
 
-        deleteStudents();
     }
 
     @Test
@@ -222,13 +222,16 @@ public class ApiStudentTests {
 
         RestAssured.given()
                 .baseUri("http://localhost:8080/topStudent")
+                .log()
+                .all()
                 .when()
                 .get()
                 .then()
+                .log()
+                .all()
                 .body(is(emptyOrNullString()))
                 .statusCode(200);
 
-        deleteStudents();
     }
 
     @Test
@@ -237,6 +240,7 @@ public class ApiStudentTests {
         addStudent(studentBasic);
         addStudent(studentBestMarks);
         addStudent(studentBestAndMostMarks);
+        addStudent(studentNoMarks);
 
         JsonPath response = RestAssured.given()
                 .baseUri("http://localhost:8080/topStudent")
@@ -251,7 +255,6 @@ public class ApiStudentTests {
 
         Assertions.assertEquals("[Boris]", response.get("name").toString());
 
-        deleteStudents();
     }
 
     @Test
@@ -260,6 +263,7 @@ public class ApiStudentTests {
         addStudent(studentBestMarks);
         addStudent(studentBasic);
         addStudent(studentBestMarksFriend);
+        addStudent(studentNoMarks);
 
         JsonPath response = RestAssured.given()
                 .baseUri("http://localhost:8080/topStudent")
@@ -273,21 +277,22 @@ public class ApiStudentTests {
                 .jsonPath();
 
 Assertions.assertEquals("[Henry, Lucian]", response.get("name").toString());
-
-        deleteStudents();
     }
 
     public void addStudent(String body) {
         RestAssured.given()
                 .baseUri("http://localhost:8080/student/")
                 .contentType(ContentType.JSON)
+                .log()
+                .all()
                 .body(body)
                 .when()
-                .post();
+                .post()
+        ;
     }
 
     public void deleteStudents() {
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 100; i++) {
             if (studentFinder(i)) {
                 studentKiller(i);
             }
@@ -300,6 +305,8 @@ Assertions.assertEquals("[Henry, Lucian]", response.get("name").toString());
                 .when()
                 .get()
                 .then()
+                .log()
+                .all()
                 .extract()
                 .statusCode();
         return statusCode == 200;
@@ -308,10 +315,24 @@ Assertions.assertEquals("[Henry, Lucian]", response.get("name").toString());
     public void studentKiller(int i) {
         RestAssured.given()
                 .baseUri("http://localhost:8080/student/" + i)
+                .log()
+                .all()
                 .when()
-                .delete();
+                .delete()
+                .then()
+                .log()
+                .all();
     }
 
 
+//            RestAssured.given()
+//                    .baseUri("http://localhost:8080/student/" + jsonBasicStudent.get("id"))
+//            .when()
+//                .delete()
+//                .then()
+//                .log()
+//                .all()
+//                .statusCode(200);
+//
 }
 
