@@ -3,8 +3,10 @@ package edu;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.is;
@@ -325,14 +327,5 @@ Assertions.assertEquals("[Henry, Lucian]", response.get("name").toString());
     }
 
 
-//            RestAssured.given()
-//                    .baseUri("http://localhost:8080/student/" + jsonBasicStudent.get("id"))
-//            .when()
-//                .delete()
-//                .then()
-//                .log()
-//                .all()
-//                .statusCode(200);
-//
 }
 
