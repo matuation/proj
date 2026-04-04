@@ -45,8 +45,30 @@ public class DataBaseTests {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
-
     }
 
+    public void deletionTest(int departmentId) {
+
+        String sqlQuery = "SELECT COUNT(*) FROM employee WHERE departmentid = ?";
+
+        try (Connection con = DriverManager.getConnection(url);
+             PreparedStatement statement = con.prepareStatement(sqlQuery)) {
+
+            statement.setInt(1, departmentId);
+
+            try (ResultSet rsOne = statement.executeQuery()) {
+                if (rsOne.next()) {
+                    int employeesCount = rsOne.getInt(1);
+
+                    if (employeesCount > 0) {
+                        System.out.println("Найдено сотрудников отдела " + departmentId + ": " + employeesCount);
+                    } else {
+                        System.out.println("Не найдены сотрудники в отделе " + departmentId);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 }
