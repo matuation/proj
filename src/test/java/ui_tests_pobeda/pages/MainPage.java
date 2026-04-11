@@ -18,7 +18,6 @@ public class MainPage {
 
     private final WebDriver driver;
     private final Actions actions;
-    private WebDriverWait wait;
 
     @FindBy(css = "img[alt*='Победа']")
     private WebElement titlePageLogoLocator;
