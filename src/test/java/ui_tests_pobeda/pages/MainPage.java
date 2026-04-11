@@ -12,11 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static ui_tests_pobeda.TestData.mainPageTitle;
+import static ui_tests_pobeda.TestData.redBorder;
 
 public class MainPage {
 
-    private WebDriver driver;
-    private Actions actions;
+    private final WebDriver driver;
+    private final Actions actions;
     private WebDriverWait wait;
 
     @FindBy(css = "img[alt*='Победа']")
@@ -29,37 +30,37 @@ public class MainPage {
     private WebElement informationPopupWindowLocator;
 
     @FindBy(linkText = "Подготовка к полёту")
-    public WebElement prepareFlightLocator;
+    private WebElement prepareFlightLocator;
 
     @FindBy(linkText = "Полезная информация")
-    public WebElement usefulInfoLocator;
+    private WebElement usefulInfoLocator;
 
     @FindBy(linkText = "О компании")
-    public WebElement aboutPobedaLocator;
+    private WebElement aboutPobedaLocator;
 
     @FindBy(xpath = "//input[contains(@class, 'root-control') and contains(@id, ':Rmqma5durm:')]")
-    public WebElement searchAreaLocator;
+    private WebElement searchAreaLocator;
 
     @FindBy(css = "input[placeholder='Откуда']")
-    public WebElement fromInputLocator;
+    private WebElement fromInputLocator;
 
     @FindBy(css = "input[placeholder='Куда']")
-    public WebElement destinationInputLocator;
+    private WebElement destinationInputLocator;
 
     @FindBy(css = "input[placeholder='Туда']")
-    public WebElement startDateInputLocator;
+    private WebElement startDateInputLocator;
 
     @FindBy(css = "input[placeholder='Обратно']")
-    public WebElement endDateInputLocator;
+    private WebElement endDateInputLocator;
 
     @FindBy(xpath = "//button[@type='submit']")
-    public WebElement submitButtonLocator;
+    private WebElement submitButtonLocator;
 
     @FindBy(xpath = "//div[contains(@class, 'root-suggestionName') and contains(text(), 'Санкт-Петербург')]")
-    public WebElement destinationSearchResultLocator;
+    private WebElement destinationSearchResultLocator;
 
     @FindBy(xpath = "//div[@data-failed='true']")
-    public WebElement failedStartDate;
+    private WebElement failedStartDate;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -82,44 +83,69 @@ public class MainPage {
         return this;
     }
 
-    public MainPage checkElementText(WebElement element, String expected) {
-        Assertions.assertEquals(expected, element.getText());
+    public MainPage checkPrepareFlightText(String expected) {
+        Assertions.assertEquals(expected, prepareFlightLocator.getText());
         return this;
     }
 
-    public MainPage checkElementValue(WebElement element, String expected) {
-        Assertions.assertEquals(expected, element.getAttribute("value"));
+    public MainPage checkUsefulInfoText(String expected) {
+        Assertions.assertEquals(expected, usefulInfoLocator.getText());
         return this;
     }
 
-    public MainPage checkElementDisplayed(WebElement element) {
-        element.isDisplayed();
+    public MainPage checkAboutText(String expected) {
+        Assertions.assertEquals(expected, aboutPobedaLocator.getText());
         return this;
     }
 
-    public MainPage clickElement(WebElement element) {
-        element.click();
+    public MainPage checkFromInputDisplayed() {
+        fromInputLocator.isDisplayed();
         return this;
     }
 
-    public MainPage typeInElement(WebElement element, String keys) {
-        element.sendKeys(keys);
+    public MainPage destinationInputDisplayed() {
+        destinationInputLocator.isDisplayed();
         return this;
     }
 
-    public MainPage checkCssAttrElement(WebElement element, String propName, String expected) {
-        Assertions.assertEquals(expected, element.getCssValue(propName));
+    public MainPage checkStartDateInputDisplayed() {
+        startDateInputLocator.isDisplayed();
         return this;
     }
 
-    public MainPage waitForCssColor(WebElement element, String expectedRgba) {
+    public MainPage checkEndDateInputDisplayed() {
+        endDateInputLocator.isDisplayed();
+        return this;
+    }
+
+    public MainPage clickDestinationInput() {
+        destinationInputLocator.click();
+        return this;
+    }
+
+    public MainPage setDestination(String keys) {
+        destinationInputLocator.sendKeys(keys);
+        return this;
+    }
+
+    public MainPage clickDestinationResult() {
+        destinationSearchResultLocator.click();
+        return this;
+    }
+
+    public MainPage searchSubmitButton() {
+        submitButtonLocator.click();
+        return this;
+    }
+
+    public MainPage checkStartDateHaveRedBorder() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         wait.until(d -> {
-            String actualColor = element.getCssValue("border-color");
-            return actualColor.contains(expectedRgba);
+            String actualColor = failedStartDate.getCssValue("border-color");
+            return actualColor.contains(redBorder);
         });
-
+        Assertions.assertEquals(redBorder, failedStartDate.getCssValue("border-color"));
         return this;
     }
 

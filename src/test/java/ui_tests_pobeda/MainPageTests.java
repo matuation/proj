@@ -16,9 +16,9 @@ public class MainPageTests extends TestBase {
         mainPage.assertTitle()
                 .findLogo()
                 .informationHover()
-                .checkElementText(mainPage.prepareFlightLocator, prepareFlightExpectedText)
-                .checkElementText(mainPage.usefulInfoLocator, usefulInfoExpectedText)
-                .checkElementText(mainPage.aboutPobedaLocator, aboutPobedaExpectedText);
+                .checkPrepareFlightText(prepareFlightExpectedText)
+                .checkUsefulInfoText(usefulInfoExpectedText)
+                .checkAboutText(aboutPobedaExpectedText);
 
     }
 
@@ -29,16 +29,14 @@ public class MainPageTests extends TestBase {
 
         mainPage.assertTitle()
                 .findLogo()
-                .checkElementDisplayed(mainPage.fromInputLocator)
-                .checkElementDisplayed(mainPage.destinationInputLocator)
-                .checkElementDisplayed(mainPage.startDateInputLocator)
-                .checkElementDisplayed(mainPage.endDateInputLocator)
-                .clickElement(mainPage.destinationInputLocator)
-                .typeInElement(mainPage.destinationInputLocator, destination)
-                .clickElement(mainPage.destinationSearchResultLocator)
-                .clickElement(mainPage.submitButtonLocator).waitForCssColor(mainPage.failedStartDate, redBorder)
-                .checkCssAttrElement(mainPage.failedStartDate, "border-color", redBorder)
-        ;
-
+                .checkFromInputDisplayed()
+                .destinationInputDisplayed()
+                .checkStartDateInputDisplayed()
+                .checkEndDateInputDisplayed()
+                .clickDestinationInput()
+                .setDestination(destination)
+                .clickDestinationResult()
+                .searchSubmitButton()
+                .checkStartDateHaveRedBorder();
     }
 }
