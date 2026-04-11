@@ -9,5 +9,9 @@ public class TestData {
     public static final String aboutPobedaExpectedText = "О компании";
     public static final String redBorder = "rgb(213, 0, 98)";
     public static final String destination = "Санкт-Петербург";
+    public static final String client = "Qwerty";
+    public static final String booking = "XXXXXX";
+    public static final String expectedInvalidOrderParamErrorText = "Заказ с указанными параметрами не найден";
+
 
 }

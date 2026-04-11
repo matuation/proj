@@ -22,10 +22,10 @@ public class TestBase {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         actions = new Actions(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
         driver.get(pobedaUrl);
     }
 

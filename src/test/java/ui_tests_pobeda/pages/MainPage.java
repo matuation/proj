@@ -61,6 +61,15 @@ public class MainPage {
     @FindBy(xpath = "//div[@data-failed='true']")
     private WebElement failedStartDate;
 
+    @FindBy(xpath = "//button[.//span[contains(@class, 'dp-12qummd-root-inner') and contains(text(), 'Управление бронированием')]]")
+    private WebElement booingControl;
+
+    @FindBy(xpath = "//input[contains(@placeholder, 'Фамилия клиента')]")
+    private WebElement clientSecondName;
+
+    @FindBy(xpath = "//input[contains(@placeholder, 'Номер бронирования или билета')]")
+    private WebElement bookingOrTicketNumber;
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
@@ -122,8 +131,23 @@ public class MainPage {
         return this;
     }
 
+    public MainPage clickBookingControl() {
+        booingControl.click();
+        return this;
+    }
+
     public MainPage setDestination(String keys) {
         destinationInputLocator.sendKeys(keys);
+        return this;
+    }
+
+    public MainPage setClientSecondName(String keys) {
+        clientSecondName.sendKeys(keys);
+        return this;
+    }
+
+    public MainPage setBookingOrTicketNumber(String keys) {
+        bookingOrTicketNumber.sendKeys(keys);
         return this;
     }
 
@@ -132,7 +156,7 @@ public class MainPage {
         return this;
     }
 
-    public MainPage searchSubmitButton() {
+    public MainPage searchSubmitButtonClick() {
         submitButtonLocator.click();
         return this;
     }
@@ -146,6 +170,15 @@ public class MainPage {
         });
         Assertions.assertEquals(redBorder, failedStartDate.getCssValue("border-color"));
         return this;
+    }
+
+    public void switchToNewTab() {
+        String thisTab = driver.getWindowHandle();
+        for (String tab : driver.getWindowHandles()) {
+            if (!tab.equals(thisTab)) {
+                driver.switchTo().window(tab);
+            }
+        }
     }
 
 
