@@ -1,6 +1,5 @@
 package ui_tests_pobeda.pages;
 
-import junit.framework.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -77,7 +76,7 @@ public class MainPage {
     }
 
     public MainPage assertTitle() {
-        Assert.assertEquals(mainPageTitle, driver.getTitle());
+        Assertions.assertEquals(mainPageTitle, driver.getTitle());
         return this;
     }
 

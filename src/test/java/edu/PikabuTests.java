@@ -1,7 +1,7 @@
 package edu;
 
-import junit.framework.Assert;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -33,7 +33,7 @@ public class PikabuTests {
     @Test
     public void unsuccessfulAuthorizationTest() {
 
-        Assert.assertEquals(titleExpected, driver.getTitle());
+        Assertions.assertEquals(titleExpected, driver.getTitle());
 
         driver.findElement(By.cssSelector(loginButton)).click();
 
@@ -47,7 +47,7 @@ public class PikabuTests {
         driver.findElement(By.xpath(loginWindowButton)).click();
 
         driver.findElement(By.xpath(wrongCredentialsErrorElement)).isDisplayed();
-        Assert.assertEquals(wrongCredentialsErrorMessage,
+        Assertions.assertEquals(wrongCredentialsErrorMessage,
                 driver.findElement(By.xpath(wrongCredentialsErrorElement)).getText());
     }
 

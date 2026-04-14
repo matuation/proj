@@ -1,6 +1,5 @@
 package edu;
 
-import junit.framework.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -69,7 +68,7 @@ public class PobedaTests {
         waitVisibleElement(By.cssSelector(letsgoKaliningradText));
         waitVisibleElement(By.cssSelector(letsgoKaliningradPic));
 
-        Assert.assertEquals(driver.findElement(By.cssSelector(letsgoKaliningradText)).getText(), letsgoKaliningradTextExpected);
+        Assertions.assertEquals(driver.findElement(By.cssSelector(letsgoKaliningradText)).getText(), letsgoKaliningradTextExpected);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(languageButton))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(languageEng))).click();
